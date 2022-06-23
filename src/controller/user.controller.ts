@@ -41,7 +41,6 @@ export class userContorller {
   @Post('/login')
   @Validate()
   async login(@Body(ALL) userLogin: UserLoginDTO) {
-    console.log(userLogin, this.ctx.query, this.ctx);
     const password = userLogin.password;
     const username = userLogin.username;
     const userModel = new UserModel();
@@ -50,9 +49,23 @@ export class userContorller {
       password
     );
 
-    const token = await this.userService.generateToken(user);
+    if (user) {
+      const token = await this.userService.generateToken(user);
+      return {
+        code: 200,
+        result: 'success',
+        message: '登录成功',
+        data: {
+          token: token,
+        },
+      };
+    }
+
     return {
-      token: token,
+      code: 400,
+      result: 'error',
+      message: '账号或密码不正确',
+      data: null,
     };
   }
 }
