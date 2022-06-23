@@ -8,14 +8,19 @@
     "@midwayjs/core": "^3.0.0",
     "@midwayjs/decorator": "^3.0.0",
     "@midwayjs/info": "^3.0.0",
+    "@midwayjs/jwt": "^3.3.11",
     "@midwayjs/koa": "^3.0.0",
     "@midwayjs/logger": "^2.14.0",
-    "@midwayjs/validate": "^3.0.0"
+    "@midwayjs/orm": "^3.3.6",
+    "@midwayjs/validate": "^3.0.0",
+    "sqlite3": "^5.0.8",
+    "typeorm": "^0.3.6"
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.2.90",
     "@midwayjs/mock": "^3.0.0",
     "@types/jest": "^26.0.10",
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/koa": "^2.13.4",
     "@types/node": "14",
     "cross-env": "^6.0.0",
