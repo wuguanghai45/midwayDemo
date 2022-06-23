@@ -9,3 +9,11 @@ export const AppDataSource = new DataSource({
   synchronize: true,
   logging: false,
 });
+
+export const initAppDataSource = async () => {
+  await AppDataSource.initialize();
+  const user = new UserEntity();
+  user.username = 'jack';
+  user.password = 'redballoon';
+  await AppDataSource.manager.save(user);
+};

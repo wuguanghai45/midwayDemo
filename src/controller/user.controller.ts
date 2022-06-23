@@ -7,26 +7,11 @@ import {
   Body,
   ALL,
 } from '@midwayjs/decorator';
-import { UserEntity } from '../entity/User';
 import { UserModel } from '../model/user';
-import { AppDataSource } from '../data-source';
 import { UserLoginDTO } from '../dot/user.dto';
 import { Context } from '@midwayjs/koa';
 import { Validate } from '@midwayjs/validate';
 import { UserService } from '../service/user.service';
-
-const createDemoUser = async () => {
-  AppDataSource.initialize()
-    .then(async () => {
-      const user = new UserEntity();
-      user.username = 'jack';
-      user.password = 'redballoon';
-      await AppDataSource.manager.save(user);
-    })
-    .catch(error => console.log(error));
-};
-
-createDemoUser();
 
 @Provide()
 @Controller('/api/user')

@@ -6,6 +6,7 @@ import { join } from 'path';
 // import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
+import { initAppDataSource, AppDataSource } from './data-source';
 import * as jwt from '@midwayjs/jwt';
 
 @Configuration({
@@ -27,6 +28,9 @@ export class ContainerLifeCycle {
   async onReady() {
     // add middleware
     this.app.useMiddleware([ReportMiddleware]);
+    if (!AppDataSource.isInitialized) {
+      await initAppDataSource();
+    }
     // add filter
     // this.app.useFilter([NotFoundFilter, DefaultErrorFilter]);
   }
